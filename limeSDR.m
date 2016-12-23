@@ -1,4 +1,36 @@
-
+% LimeSDR MATLAB interface
+%
+% (1) Open a device handle:
+%
+%   dev = limeSDR(); % Open device
+%
+% (2) Setup device parameters. These may be changed while the device
+%     is actively streaming.
+%
+%   dev.rx0.frequency  = 917.45e6;
+%   dev.rx0.samplerate = 5e6;
+%   dev.rx0.gain = 0.5;
+%   dev.rx0.antenna = 2;
+%
+% (3) Enable stream parameters. These may NOT be changed while the device
+%     is streaming.
+%
+%   dev.rx0.enable;
+%
+%
+% (4) Start the module
+%
+%   dev.start();
+%
+% (5) Receive 0.250 seconds of samples on RX0 channel
+%
+%  samples = b.receive(0.250 * b.rx.samplerate,0);
+%
+% (6) Cleanup and shutdown by stopping the RX stream and having MATLAB
+%     delete the handle object.
+%
+%  dev.stop();
+%  clear dev;
 
 %% Top-level limesdr object
 classdef limeSDR < handle
@@ -38,6 +70,23 @@ classdef limeSDR < handle
     
     methods(Static)
         function build_thunk
+        % Build the MATLAB thunk library for use with the LimeSDR MATLAB wrapper
+        %
+        % limeSDR.build_thunk();
+        %
+        % This function is intended to provide developers with the means to
+        % regenerate the libLimeSuite_thunk_<arch>.<library extension> files.
+        % Users of pre-built binaries need not concern themselves with this
+        % function.
+        %
+        % Use of this function requires that:
+        %   - The system contains a MATLAB-compatible compiler
+        %   - Any required libraries, DLLs, headers, etc. are in the search path or current working directory.
+        %
+        % For Windows users, the simplest approach is to copy the following
+        % to this directory:
+        %   - LimeSuite.dll
+
             if libisloaded('libLimeSuite') == true
                 unloadlibrary('libLimeSuite');
             end
