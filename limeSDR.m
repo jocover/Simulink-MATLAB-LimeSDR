@@ -47,11 +47,11 @@ classdef limeSDR < handle
             proto_output = 'delete_this_file';
             switch arch
                 case 'win64'
-                    [notfound, warnings] = loadlibrary('LimeSuite', 'LimeSuite.h', 'includepath', this_dir, 'alias', 'libLimeSuite', 'notempdir', 'mfilename', proto_output);
+                    [notfound, warnings] = loadlibrary('LimeSuite', 'LimeSuite_Build_Thunk.h', 'includepath', this_dir, 'alias', 'libLimeSuite', 'notempdir', 'mfilename', proto_output);
                 case 'glnxa64'
-                    [notfound, warnings] = loadlibrary('libLimeSuite', 'LimeSuite.h', 'includepath', this_dir, 'notempdir', 'mfilename', proto_output);
+                    [notfound, warnings] = loadlibrary('libLimeSuite', 'LimeSuite_Build_Thunk.h', 'includepath', this_dir, 'notempdir', 'mfilename', proto_output);
                 case 'maci64'
-                    [notfound, warnings] = loadlibrary('libLimeSuite.dylib', 'LimeSuite.h', 'includepath', this_dir, 'notempdir', 'mfilename', proto_output);
+                    [notfound, warnings] = loadlibrary('libLimeSuite.dylib', 'LimeSuite_Build_Thunk.h', 'includepath', this_dir, 'notempdir', 'mfilename', proto_output);
                 otherwise
                     error(strcat('Unsupported architecture: ', arch))
             end
