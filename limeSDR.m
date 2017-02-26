@@ -22,9 +22,9 @@
 %
 %   dev.start();
 %
-% (5) Receive 0.250 seconds of samples on RX0 channel
+% (5) Receive 5000 samples on RX0 channel
 %
-%  samples = b.receive(0.250 * b.rx.samplerate,0);
+%  samples = dev.receive(5000,0);
 %
 % (6) Cleanup and shutdown by stopping the RX stream and having MATLAB
 %     delete the handle object.
