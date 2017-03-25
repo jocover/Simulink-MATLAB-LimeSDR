@@ -79,8 +79,6 @@ fcns.thunkname{fcnNum}='int32voidPtr_BoolvoidPtrThunk';fcns.name{fcnNum}='LMS_Ge
 fcns.thunkname{fcnNum}=['int32voidPtr_Bool' u64_type 'doubleThunk'];fcns.name{fcnNum}='LMS_SetNormalizedGain'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'voidPtr', 'bool', u64_type, 'double'};fcnNum=fcnNum+1;
 %  int __cdecl LMS_GetNormalizedGain ( lms_device_t * device , _Bool dir_tx , size_t chan , float_type * gain );
 fcns.thunkname{fcnNum}=['int32voidPtr_Bool' u64_type 'voidPtrThunk'];fcns.name{fcnNum}='LMS_GetNormalizedGain'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'voidPtr', 'bool', u64_type, 'doublePtr'};fcnNum=fcnNum+1;
-%  int __cdecl LMS_SetLPFBWFixed ( lms_device_t * device , _Bool dir_tx , size_t chan , LPF_FixedBW bandwidth );
-fcns.thunkname{fcnNum}=['int32voidPtr_Bool' u64_type 'LPF_FixedBWThunk'];fcns.name{fcnNum}='LMS_SetLPFBWFixed'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'voidPtr', 'bool', u64_type, 'LPF_FixedBW'};fcnNum=fcnNum+1;
 %  int __cdecl LMS_SetLPFBW ( lms_device_t * device , _Bool dir_tx , size_t chan , float_type bandwidth );
 fcns.thunkname{fcnNum}=['int32voidPtr_Bool' u64_type 'doubleThunk'];fcns.name{fcnNum}='LMS_SetLPFBW'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'voidPtr', 'bool', u64_type, 'double'};fcnNum=fcnNum+1;
 %  int __cdecl LMS_GetLPFBW ( lms_device_t * device , _Bool dir_tx , size_t chan , float_type * bandwidth );
@@ -218,6 +216,5 @@ structs.lms_dev_info_t.members=struct('deviceName', 'int8#32', 'expansionName', 
 enuminfo.lms_gfir_t=struct('LMS_GFIR1',0,'LMS_GFIR2',1,'LMS_GFIR3',2);
 enuminfo.lms_target_t=struct('LMS_TARGET_RAM',0,'LMS_TARGET_FLASH',1,'LMS_TARGET_BOOT',2);
 enuminfo.lms_loopback_t=struct('LMS_LOOPBACK_NONE',0);
-enuminfo.LPF_FixedBW=struct('LPF_BW_5_MHz',0,'LPF_BW_10_MHz',1,'LPF_BW_15_MHz',2,'LPF_BW_20_MHz',3,'LPF_BW_COUNT',4);
 enuminfo.lms_testsig_t=struct('LMS_TESTSIG_NONE',0,'LMS_TESTSIG_NCODIV8',1,'LMS_TESTSIG_NCODIV4',2,'LMS_TESTSIG_NCODIV8F',3,'LMS_TESTSIG_NCODIV4F',4,'LMS_TESTSIG_DC',5);
 methodinfo=fcns;
