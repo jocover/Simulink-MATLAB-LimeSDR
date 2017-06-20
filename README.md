@@ -15,3 +15,6 @@ For more information, use the MATLAB `help limeSDR` and `doc limeSDR` commands o
 add **MATLAB System block** and choose limeSDR_Simulink.m file
 
 
+# License #
+	
+This code is distributed under an [MIT License](LICENSE.MIT).
