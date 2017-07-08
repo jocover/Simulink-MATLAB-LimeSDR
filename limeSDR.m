@@ -242,7 +242,6 @@ classdef limeSDR < handle
             obj.info.gatewareTargetBoard=char(dinfo.gatewareTargetBoard);
             
             obj.versions.library_version=char(calllib('libLimeSuite', 'LMS_GetLibraryVersion'));
-            obj.versions.buile_timestamp=char(calllib('libLimeSuite', 'LMS_GetBuildTimestamp'));
             
             obj.rx0 = limeSDR_XCVR(obj, 'RX',0);
             obj.rx1 = limeSDR_XCVR(obj, 'RX',1);
