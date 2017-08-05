@@ -31,14 +31,13 @@
 %
 %   dev.rx0.frequency  = 917.45e6;
 %   dev.rx0.samplerate = 5e6;
-%   dev.rx0.gain = 0.5;
+%   dev.rx0.gain = 30;
 %   dev.rx0.antenna = 2;
 %
 % (3) Enable stream parameters. These may NOT be changed while the device
 %     is streaming.
 %
 %   dev.rx0.enable;
-%
 %
 % (4) Start the module
 %
@@ -147,10 +146,9 @@ classdef limeSDR < handle
             minor = 0;
             patch = 1;
         end
-        function [version_string ,buile_timestamp] = library_version()
+        function [version_string] = library_version()
             limeSDR.load_library();
             version_string=char(calllib('libLimeSuite', 'LMS_GetLibraryVersion'));
-            buile_timestamp=char(calllib('libLimeSuite', 'LMS_GetBuildTimestamp'));
         end
         function devs = devices
             limeSDR.load_library();
@@ -246,8 +244,7 @@ classdef limeSDR < handle
             obj.rx0 = limeSDR_XCVR(obj, 'RX',0);
             obj.rx1 = limeSDR_XCVR(obj, 'RX',1);
             obj.tx0 = limeSDR_XCVR(obj, 'TX',0);
-            obj.tx1 = limeSDR_XCVR(obj, 'TX',1);
-            
+            obj.tx1 = limeSDR_XCVR(obj, 'TX',1);            
             obj.running= false;
             
         end
@@ -410,6 +407,10 @@ classdef limeSDR < handle
                 obj.tx1_stream=[];
             end
             
+        end
+        
+        function loadconfig(obj,filename)
+            limeSDR.check_status(calllib('libLimeSuite', 'LMS_LoadConfig', obj.device,filename));
         end
     end
     

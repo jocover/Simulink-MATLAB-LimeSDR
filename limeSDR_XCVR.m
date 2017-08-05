@@ -51,7 +51,7 @@ classdef limeSDR_XCVR < handle
     methods
         
         function set.samplerate(obj, val)
-            limeSDR.check_status(calllib('libLimeSuite', 'LMS_SetSampleRate', obj.limesdr.device,val,2));
+            limeSDR.check_status(calllib('libLimeSuite', 'LMS_SetSampleRate', obj.limesdr.device,val,0));
         end
         
         function samplerate_val = get.samplerate(obj)
@@ -82,25 +82,21 @@ classdef limeSDR_XCVR < handle
             bw_val=bw.value;
         end
         
-        function set.antenna(obj,index)
-            
-            limeSDR.check_status(calllib('libLimeSuite', 'LMS_SetAntenna', obj.limesdr.device,obj.isTx,obj.chan,index));
-            
+        function set.antenna(obj,index)            
+            limeSDR.check_status(calllib('libLimeSuite', 'LMS_SetAntenna', obj.limesdr.device,obj.isTx,obj.chan,index));           
         end
         
         function ant_index = get.antenna(obj)
             ant_index= calllib('libLimeSuite', 'LMS_GetAntenna', obj.limesdr.device,obj.isTx,0);
         end
         
-        function set.gain(obj,val)
-            
-            limeSDR.check_status(calllib('libLimeSuite', 'LMS_SetNormalizedGain', obj.limesdr.device,obj.isTx,obj.chan,val));
+        function set.gain(obj,val)            
+            limeSDR.check_status(calllib('libLimeSuite', 'LMS_SetGaindB', obj.limesdr.device,obj.isTx,obj.chan,val));
         end
         
-        function val = get.gain(obj)
-            
+        function val = get.gain(obj)           
             gain_val=libpointer('doublePtr',0);
-            limeSDR.check_status(calllib('libLimeSuite', 'LMS_GetNormalizedGain', obj.limesdr.device,obj.isTx,obj.chan,gain_val));
+            limeSDR.check_status(calllib('libLimeSuite', 'LMS_GetGaindB', obj.limesdr.device,obj.isTx,obj.chan,gain_val));
             val=gain_val.value;
         end
         
